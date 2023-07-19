@@ -1,0 +1,21 @@
+{
+	"name": "typed-at-rest",
+	"version": "0.0.0",
+	"private": true,
+	"packageManager": "pnpm@8.6.9",
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^6.1.0",
+		"@typescript-eslint/parser": "^6.1.0",
+		"eslint": "^8.45.0",
+		"eslint-config-prettier": "8.8.0",
+		"prettier": "^2.8.8",
+		"turbo": "^1.10.8",
+		"typescript": "^5.1.6"
+	},
+	"scripts": {
+		"dev": "turbo dev",
+		"build": "turbo build",
+		"lint": "turbo lint",
+		"test": "turbo test"
+	}
+}

@@ -1,0 +1,8 @@
+{
+	"extends": "@typed-at-rest/tsconfig/base.json",
+	"include": ["src"],
+	"exclude": ["node_modules", "**/__tests__/*"],
+	"compilerOptions": {
+		"outDir": "./dist"
+	}
+}

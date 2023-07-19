@@ -1,0 +1,21 @@
+{
+	"name": "@typed-at-rest/example-schema",
+	"version": "0.1.0",
+	"private": true,
+	"main": "dist/index.js",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"dev": "tsup src/index.ts --format cjs,esm --dts-resolve --watch",
+		"build": "tsup src/index.ts --format cjs,esm --minify --dts-resolve"
+	},
+	"dependencies": {
+		"@effect/schema": "^0.30.0",
+		"@typed-at-rest/core": "workspace:*"
+	},
+	"devDependencies": {
+		"@typed-at-rest/tsconfig": "workspace:*",
+		"tsx": "^3.12.7",
+		"tsup": "^7.1.0"
+	}
+}

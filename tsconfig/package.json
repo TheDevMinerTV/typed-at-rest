@@ -1,0 +1,7 @@
+{
+	"name": "@typed-at-rest/tsconfig",
+	"private": true,
+	"files": [
+		"./base.json"
+	]
+}

@@ -1,0 +1,21 @@
+{
+	"name": "@typed-at-rest/example-cli",
+	"version": "0.1.0",
+	"private": true,
+	"main": "dist/index.js",
+	"scripts": {
+		"dev": "tsx watch --clear-screen=false src/index.ts",
+		"build": "tsup src/index.ts --format cjs --minify --dts-resolve"
+	},
+	"dependencies": {
+		"@typed-at-rest/client": "workspace:*",
+		"@typed-at-rest/example-schema": "workspace:*",
+		"discord.js": "^14.11.0"
+	},
+	"devDependencies": {
+		"@typed-at-rest/tsconfig": "workspace:*",
+		"@types/node": "^18.16.19",
+		"tsx": "^3.12.7",
+		"tsup": "^7.1.0"
+	}
+}

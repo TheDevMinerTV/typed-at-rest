@@ -1,0 +1,21 @@
+{
+	"name": "@typed-at-rest/next-server",
+	"license": "MIT",
+	"version": "0.1.0",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"module": "dist/index.mjs",
+	"scripts": {
+		"dev": "tsup src/index.ts --format cjs,esm --dts-resolve --watch --sourcemap",
+		"build": "tsup src/index.ts --format cjs,esm --dts-resolve --minify --sourcemap"
+	},
+	"dependencies": {
+		"@typed-at-rest/server": "workspace:*",
+		"next": "^13.4.10"
+	},
+	"devDependencies": {
+		"@typed-at-rest/tsconfig": "workspace:*",
+		"@types/node": "^18.16.19",
+		"tsup": "^7.1.0"
+	}
+}
