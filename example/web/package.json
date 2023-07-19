@@ -1,5 +1,5 @@
 {
-	"name": "@typed-at-rest/example-app",
+	"name": "@typed-at-rest/example-web",
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
