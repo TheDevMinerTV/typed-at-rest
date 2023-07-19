@@ -10,6 +10,7 @@
 		"build": "tsup src/index.ts --format cjs,esm --dts-resolve --minify --sourcemap"
 	},
 	"dependencies": {
+		"@typed-at-rest/core": "workspace:*",
 		"@typed-at-rest/server": "workspace:*",
 		"next": "^13.4.10"
 	},

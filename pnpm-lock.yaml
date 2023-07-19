@@ -151,6 +151,9 @@ importers:
 
   next-server:
     dependencies:
+      '@typed-at-rest/core':
+        specifier: workspace:*
+        version: link:../core
       '@typed-at-rest/server':
         specifier: workspace:*
         version: link:../server
