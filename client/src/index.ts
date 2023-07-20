@@ -6,6 +6,7 @@ import {
 	APIResult,
 	APIResultSchema,
 	EndpointDefinition,
+	inferAPIOkResult,
 	inferParams,
 	inferRequest,
 	inferResponse,
@@ -15,7 +16,7 @@ import { Effect } from "effect";
 import * as Either from "effect/Either";
 import * as Fn from "effect/Function";
 
-type MethodResult<MD> = Promise<APIResult<any, inferResponse<MD>>>;
+type MethodResult<MD> = Promise<inferResponse<MD>>;
 
 type createAuthedMethodFn<MD, Params> = MD extends { request: any }
 	? (token: string, params: Params, body: inferRequest<MD>) => MethodResult<MD>
@@ -32,6 +33,10 @@ type createMethodFn<MD, Params> = MD extends { auth: true }
 export type EndpointClient<D extends EndpointDefinition<any>> = {
 	[M in keyof D["methods"]]: createMethodFn<D["methods"][M], inferParams<D>>;
 };
+
+export type inferSuccessResponse<D extends EndpointClient<any>, M extends keyof D> = inferAPIOkResult<
+	Awaited<ReturnType<D[M]>>
+>;
 
 export const makeClient = <D extends EndpointDefinition<any>>(base: string, endpoint: D): EndpointClient<D> => {
 	const client: Partial<EndpointClient<D>> = {};
