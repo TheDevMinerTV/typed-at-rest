@@ -8,9 +8,9 @@ import {
 	EndpointDefinition,
 	HTTPMethod,
 	WithRequest,
+	inferAPIOkResult,
 	inferParams,
 	inferRequest,
-	inferResponse,
 	makeAPIErrResult,
 } from "@typed-at-rest/core";
 import { Effect } from "effect";
@@ -41,8 +41,8 @@ type Handler<Params extends Record<string, any>, Body, ResponseData, Request, Re
 ) => Promise<APIResult<any, ResponseData>>;
 
 type createHandlerFn<MD, Params extends Record<string, any>, Request, Response> = MD extends WithRequest<any, any>
-	? Handler<Params, inferRequest<MD>, inferResponse<MD>, Request, Response>
-	: Handler<Params, never, inferResponse<MD>, Request, Response>;
+	? Handler<Params, inferRequest<MD>, inferAPIOkResult<MD>, Request, Response>
+	: Handler<Params, never, inferAPIOkResult<MD>, Request, Response>;
 
 export type EndpointHandlers<ED extends EndpointDefinition<any>, Request, Response> = {
 	[Method in keyof ED["methods"]]: createHandlerFn<ED["methods"][Method], inferParams<ED>, Request, Response>;

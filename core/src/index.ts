@@ -12,7 +12,9 @@ export type APIError = S.To<typeof APIErrorSchema>;
 export const makeAPIError = (code: number, message: string): APIError => ({ code, message });
 
 export const APIOkResult = <T>(data: S.Schema<any, T>) => S.struct({ ok: S.literal(true), data });
+export type APIOkResult<T> = S.To<ReturnType<typeof APIOkResult<T>>>;
 export const makeAPIOkResult = <T>(data: T) => ({ ok: true, data } as const);
+export type inferAPIOkResult<R> = R extends APIOkResult<infer Res> ? Res : never;
 
 export const APIErrResult = S.struct({ ok: S.literal(false), error: APIErrorSchema });
 export const makeAPIErrResult = (code: number, message: string) =>
@@ -38,7 +40,11 @@ export const makePathResolver = <Params>(schema: S.Schema<any, Params>, s: Resol
 type RouteAuth = { auth: boolean };
 
 export type WithResponse<In, Out> = { response: S.Schema<In, Out> };
-export type inferResponse<M> = M extends WithResponse<any, infer Res> ? Res : never;
+export type inferResponse<M> = M extends WithResponse<any, infer Res> ? APIResult<any, Res> : never;
+export type inferSuccessResponse<
+	D extends EndpointDefinition<any>,
+	M extends keyof D["methods"]
+> = inferAPIOkResult<D["methods"][M]>;
 
 export type WithRequest<In, Out> = { request: S.Schema<In, Out> };
 export type inferRequest<M> = M extends WithRequest<any, infer Req> ? Req : never;
