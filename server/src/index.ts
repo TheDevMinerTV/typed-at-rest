@@ -60,8 +60,6 @@ export const makeCoreHandler = <
 		const r = endpoint.methods[req.TYPEDATREST_internal.method];
 		const handler = handlers[req.TYPEDATREST_internal.method];
 
-		console.log("req.TYPEDATREST_internal.method", req.TYPEDATREST_internal.method);
-
 		if (!r) {
 			console.warn(
 				`Received ${req.TYPEDATREST_internal.method} request on ${req.TYPEDATREST_internal.url}, but it's schema doesn't support that method`
