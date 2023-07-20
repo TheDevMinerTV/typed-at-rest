@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import * as S from "@effect/schema/Schema";
+import { ResultSchema, inferOkResult, makeErrResult } from "./result";
 
+export * from "./optional";
+export * from "./result";
 export * from "./utils";
 
 export const APIErrorSchema = S.struct({
@@ -9,18 +12,10 @@ export const APIErrorSchema = S.struct({
 	message: S.string,
 });
 export type APIError = S.To<typeof APIErrorSchema>;
-export const makeAPIError = (code: number, message: string): APIError => ({ code, message });
+export const makeAPIError = (code: number, message: string): APIError => ({ code, message } as const);
+export const makeAPIErrResult = (code: number, message: string) => makeErrResult(makeAPIError(code, message));
 
-export const APIOkResult = <T>(data: S.Schema<any, T>) => S.struct({ ok: S.literal(true), data });
-export type APIOkResult<T> = S.To<ReturnType<typeof APIOkResult<T>>>;
-export const makeAPIOkResult = <T>(data: T) => ({ ok: true, data } as const);
-export type inferAPIOkResult<R> = R extends APIOkResult<infer Res> ? Res : never;
-
-export const APIErrResult = S.struct({ ok: S.literal(false), error: APIErrorSchema });
-export const makeAPIErrResult = (code: number, message: string) =>
-	({ ok: false, error: makeAPIError(code, message) } as const);
-
-export const APIResultSchema = <In, Out>(inner: S.Schema<In, Out>) => S.union(APIOkResult(inner), APIErrResult);
+export const APIResultSchema = <In, Out>(inner: S.Schema<In, Out>) => ResultSchema(inner, APIErrorSchema);
 export type APIResult<In, Out> = S.To<ReturnType<typeof APIResultSchema<In, Out>>>;
 
 export type HTTPMethod = "GET" | "DELETE" | "POST" | "PATCH" | "PUT";
@@ -41,10 +36,9 @@ type RouteAuth = { auth: boolean };
 
 export type WithResponse<In, Out> = { response: S.Schema<In, Out> };
 export type inferResponse<M> = M extends WithResponse<any, infer Res> ? APIResult<any, Res> : never;
-export type inferSuccessResponse<
-	D extends EndpointDefinition<any>,
-	M extends keyof D["methods"]
-> = inferAPIOkResult<D["methods"][M]>;
+export type inferSuccessResponse<D extends EndpointDefinition<any>, M extends keyof D["methods"]> = inferOkResult<
+	D["methods"][M]
+>;
 
 export type WithRequest<In, Out> = { request: S.Schema<In, Out> };
 export type inferRequest<M> = M extends WithRequest<any, infer Req> ? Req : never;
@@ -53,6 +47,7 @@ export type Route<Method extends HTTPMethod> = (Method extends "GET" | "DELETE"
 	? WithResponse<any, any>
 	: WithResponse<any, any> | (WithRequest<any, any> & WithResponse<any, any>)) &
 	RouteAuth;
+export type inferRouteOkResponse<R> = R extends WithResponse<any, infer Res> ? Res : never;
 
 export type EndpointDefinition<Params> = {
 	path: Path<Params>;

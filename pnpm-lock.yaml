@@ -109,7 +109,47 @@ importers:
         specifier: ^3.12.7
         version: 3.12.7
 
-  example/web:
+  example/web-app:
+    dependencies:
+      '@typed-at-rest/client':
+        specifier: workspace:*
+        version: link:../../client
+      '@typed-at-rest/core':
+        specifier: workspace:*
+        version: link:../../core
+      '@typed-at-rest/example-schema':
+        specifier: workspace:*
+        version: link:../schema
+      '@typed-at-rest/next-server':
+        specifier: workspace:*
+        version: link:../../next-server
+      '@types/node':
+        specifier: ^18.16.19
+        version: 18.16.19
+      next:
+        specifier: ^13.4.10
+        version: 13.4.10(react-dom@18.2.0)(react@18.2.0)
+      react:
+        specifier: 18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: 18.2.0
+        version: 18.2.0(react@18.2.0)
+    devDependencies:
+      '@typed-at-rest/tsconfig':
+        specifier: workspace:*
+        version: link:../../tsconfig
+      '@types/react':
+        specifier: 18.2.15
+        version: 18.2.15
+      '@types/react-dom':
+        specifier: 18.2.7
+        version: 18.2.7
+      typescript:
+        specifier: ^5.1.6
+        version: 5.1.6
+
+  example/web-pages:
     dependencies:
       '@typed-at-rest/client':
         specifier: workspace:*
@@ -186,6 +226,9 @@ importers:
       '@typed-at-rest/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
+      '@types/node':
+        specifier: ^18.16.19
+        version: 18.16.19
       tsup:
         specifier: ^7.1.0
         version: 7.1.0(typescript@5.1.6)

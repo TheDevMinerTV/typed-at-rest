@@ -6,7 +6,7 @@ import {
 	APIResult,
 	APIResultSchema,
 	EndpointDefinition,
-	inferAPIOkResult,
+	inferOkResult,
 	inferParams,
 	inferRequest,
 	inferResponse,
@@ -34,7 +34,7 @@ export type EndpointClient<D extends EndpointDefinition<any>> = {
 	[M in keyof D["methods"]]: createMethodFn<D["methods"][M], inferParams<D>>;
 };
 
-export type inferSuccessResponse<D extends EndpointClient<any>, M extends keyof D> = inferAPIOkResult<
+export type inferSuccessResponse<D extends EndpointClient<any>, M extends keyof D> = inferOkResult<
 	Awaited<ReturnType<D[M]>>
 >;
 
@@ -94,7 +94,6 @@ export const makeClient = <D extends EndpointDefinition<any>>(base: string, endp
 						try: () => JSON.parse(raw) as unknown,
 						catch: () => makeAPIErrResult(5000, `Could not parse json: ${raw}`),
 					}),
-					Effect.tap((v) => Effect.log(JSON.stringify(v))),
 					Effect.flatMap(S.parse(APIResultSchema(def.response))),
 					Effect.mapError((errors) =>
 						"_tag" in errors && errors._tag === "ParseError"

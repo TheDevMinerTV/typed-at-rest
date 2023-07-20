@@ -16,6 +16,7 @@
 	},
 	"devDependencies": {
 		"@typed-at-rest/tsconfig": "workspace:*",
+		"@types/node": "^18.16.19",
 		"tsup": "^7.1.0"
 	}
 }

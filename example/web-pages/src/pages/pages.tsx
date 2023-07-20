@@ -1,11 +1,9 @@
-"use client";
-
 import { inferSuccessResponse, makeClient } from "@typed-at-rest/client";
-import { DemoEndpoint } from "@typed-at-rest/example-schema";
+import { PagesDemoEndpoint } from "@typed-at-rest/example-schema";
 import { useEffect, useState } from "react";
 
-export function Demo() {
-	const client = makeClient(window.location.origin, DemoEndpoint);
+export function PagesDemo() {
+	const client = makeClient(typeof window === "undefined" ? "" : window.location.origin, PagesDemoEndpoint);
 	const [res, setRes] = useState<inferSuccessResponse<typeof client, "GET"> | null>(null);
 
 	useEffect(() => {
@@ -15,4 +13,12 @@ export function Demo() {
 	}, []);
 
 	return <div>{res?.message}</div>;
+}
+
+export default function PagesDemoPage() {
+	return (
+		<main>
+			<PagesDemo />
+		</main>
+	);
 }

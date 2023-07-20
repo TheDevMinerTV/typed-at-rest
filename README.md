@@ -4,7 +4,7 @@
 
 ## TODO
 
-- [ ] NextJS App Directory route handler
+- [x] NextJS App Directory route handler
 - [ ] React Query client
 - [ ] Release on NPM and GitHub Packages
 - [ ] More examples

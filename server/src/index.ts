@@ -8,138 +8,123 @@ import {
 	EndpointDefinition,
 	HTTPMethod,
 	WithRequest,
-	inferAPIOkResult,
 	inferParams,
 	inferRequest,
+	inferRouteOkResponse,
 	makeAPIErrResult,
+	makeAPIError,
+	makeErrResult,
 } from "@typed-at-rest/core";
 import { Effect } from "effect";
 import * as Either from "effect/Either";
 import * as Fn from "effect/Function";
 
-export type APIRequest = {
-	TYPEDATREST_internal: {
-		body: unknown;
-		method: HTTPMethod;
-		url: URL;
-		query: Record<string, string | string[] | undefined>;
-	};
-};
-
-export type APIResponse = {
-	TYPEDATREST_internal: {
-		status(code: number): APIResponse;
-		json(data: unknown): unknown;
-	};
-};
-
-type Handler<Params extends Record<string, any>, Body, ResponseData, Request, Response> = (
+type Handler<Params extends Record<string, any>, Body, ResponseData, Request> = (
 	request: Request,
-	response: Response,
 	params: Params,
 	body: Body
 ) => Promise<APIResult<any, ResponseData>>;
 
-type createHandlerFn<MD, Params extends Record<string, any>, Request, Response> = MD extends WithRequest<any, any>
-	? Handler<Params, inferRequest<MD>, inferAPIOkResult<MD>, Request, Response>
-	: Handler<Params, never, inferAPIOkResult<MD>, Request, Response>;
+type createHandlerFn<RD, Params extends Record<string, any>, Request> = RD extends WithRequest<any, any>
+	? Handler<Params, inferRequest<RD>, inferRouteOkResponse<RD>, Request>
+	: Handler<Params, never, inferRouteOkResponse<RD>, Request>;
 
-export type EndpointHandlers<ED extends EndpointDefinition<any>, Request, Response> = {
-	[Method in keyof ED["methods"]]: createHandlerFn<ED["methods"][Method], inferParams<ED>, Request, Response>;
+export type EndpointHandlers<ED extends EndpointDefinition<any>, Request> = {
+	[Method in keyof ED["methods"]]: createHandlerFn<ED["methods"][Method], inferParams<ED>, Request>;
 };
 
-export const makeCoreHandler = <
-	ED extends EndpointDefinition<any>,
-	Request extends APIRequest,
-	Response extends APIResponse
->(
+export const handleCoreRequest = async <ED extends EndpointDefinition<any>>(
 	endpoint: ED,
-	handlers: EndpointHandlers<ED, Request, Response>
+	handlers: EndpointHandlers<ED, any>,
+	method: HTTPMethod,
+	rawUrl: string,
+	body: unknown,
+	request: any
 ) => {
-	return async (req: Request, res: Response) => {
-		const r = endpoint.methods[req.TYPEDATREST_internal.method];
-		const handler = handlers[req.TYPEDATREST_internal.method];
+	const url = new URL(rawUrl, "http://localhost");
+	const query = Object.fromEntries(url.searchParams);
 
-		if (!r) {
-			console.warn(
-				`Received ${req.TYPEDATREST_internal.method} request on ${req.TYPEDATREST_internal.url}, but it's schema doesn't support that method`
-			);
+	const r = endpoint.methods[method];
+	const handler = handlers[method];
 
-			return res.TYPEDATREST_internal.status(405).TYPEDATREST_internal.json({
-				ok: false,
-				error: {
-					code: 405,
-					message: "Method not allowed",
-				},
-			});
-		}
-		if (!handler) {
-			console.warn(
-				`Received ${req.TYPEDATREST_internal.method} request on ${req.TYPEDATREST_internal.url}, but no handler is attached to that method`
-			);
+	if (!r) {
+		console.warn(`Received ${method} request on ${url}, but it's schema doesn't support that method`);
+		return makeAPIErrResult(405, "Method not allowed");
+	}
+	if (!handler) {
+		console.warn(`Received ${method} request on ${url}, but no handler is attached to that method`);
+		return makeAPIErrResult(500, "No handler attached to method");
+	}
 
-			return res.TYPEDATREST_internal.status(405).TYPEDATREST_internal.json({
-				ok: false,
-				error: {
-					code: 405,
-					message: "Method not allowed",
-				},
-			});
-		}
+	const params = Fn.pipe(
+		query,
+		S.parseEither(endpoint.path.schema),
+		Either.mapLeft((errors) =>
+			makeAPIError(400, `Could not parse path params with schema: ${formatErrors(errors.errors)}`)
+		)
+	);
+	if (Either.isLeft(params)) {
+		return makeErrResult({
+			ok: false,
+			error: params.left,
+		});
+	}
 
-		const params = Fn.pipe(
-			req.TYPEDATREST_internal.query,
-			S.parseEither(endpoint.path.schema),
-			Either.mapLeft((errors) => ({
-				code: 400,
-				message: `Could not parse path params with schema: ${formatErrors(errors.errors)}`,
-			}))
-		);
-		if (Either.isLeft(params)) {
-			return res.TYPEDATREST_internal.status(params.left.code).TYPEDATREST_internal.json({
-				ok: false,
-				error: params.left,
-			});
-		}
+	let validated: inferRequest<ED["methods"][typeof method]> | undefined = undefined;
 
-		let validated: inferRequest<ED["methods"][typeof req.TYPEDATREST_internal.method]> | undefined = undefined;
-
-		if ("request" in r) {
-			const json = Fn.pipe(
-				req.TYPEDATREST_internal.body,
-				S.parseEither(r.request),
-				Either.mapLeft((errors) => ({
-					code: 400,
-					message: `Could not parse json with schema: ${formatErrors(errors.errors)}`,
-				}))
-			);
-			if (Either.isLeft(json)) {
-				return res.TYPEDATREST_internal.status(json.left.code).TYPEDATREST_internal.json({
-					ok: false,
-					error: json.left,
-				});
-			}
-
-			validated = json.right;
-		}
-
-		const v = await Effect.runPromise(
-			Fn.pipe(
-				Effect.promise(() => {
-					// @ts-expect-error these signatures match
-					const r = handler(req, res, params.right, validated);
-
-					return r;
-				}),
-				Effect.tap((r) => Effect.log(JSON.stringify(r))),
-				Effect.flatMap(S.encode(APIResultSchema(r.response))),
-				Effect.mapError((errors) =>
-					makeAPIErrResult(500, `Could not encode response with schema: ${formatErrors(errors.errors)}`)
-				),
-				Effect.merge
+	if ("request" in r) {
+		const json = Fn.pipe(
+			body,
+			S.parseEither(r.request),
+			Either.mapLeft((errors) =>
+				makeAPIError(400, `Could not parse json with schema: ${formatErrors(errors.errors)}`)
 			)
 		);
+		if (Either.isLeft(json)) {
+			return makeErrResult({
+				ok: false,
+				error: json.left,
+			});
+		}
 
-		return res.TYPEDATREST_internal.status(v.ok ? 200 : v.error.code).TYPEDATREST_internal.json(v);
-	};
+		validated = json.right;
+	}
+
+	return Effect.runPromise(
+		Fn.pipe(
+			Effect.promise(() => {
+				// @ts-expect-error these signatures match
+				const r = handler(request, params.right, validated);
+				return r;
+			}),
+			Effect.flatMap(S.encode(APIResultSchema(r.response))),
+			Effect.mapError((errors) =>
+				makeAPIErrResult(500, `Could not encode response with schema: ${formatErrors(errors.errors)}`)
+			),
+			Effect.merge
+		)
+	);
 };
+
+// const TestEndpoint = {
+// 	path: makePathResolver(S.struct({}), () => "/api/test"),
+// 	methods: {
+// 		GET: {
+// 			auth: false,
+// 			response: S.struct({
+// 				message: S.string,
+// 			}),
+// 		},
+// 	},
+// } as const satisfies Endpoint;
+
+// const h = handleCoreRequest(
+// 	TestEndpoint,
+// 	{
+// 		GET: async () => makeOkResult({ message: "Hello from the app dir!" }),
+// 	},
+// 	"GET",
+// 	"/api/test",
+// 	{},
+// 	{}
+// );
