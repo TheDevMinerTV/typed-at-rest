@@ -2,7 +2,7 @@
 	"name": "typed-at-rest",
 	"version": "0.0.0",
 	"private": true,
-	"packageManager": "pnpm@8.6.10",
+	"packageManager": "pnpm@8.6.12",
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "^6.1.0",
 		"@typescript-eslint/parser": "^6.1.0",
