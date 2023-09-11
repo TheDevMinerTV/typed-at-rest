@@ -10,7 +10,7 @@
 		"build": "tsup src/index.ts --format cjs,esm --dts-resolve --minify --sourcemap"
 	},
 	"dependencies": {
-		"@effect/schema": "^0.30.0",
+		"@effect/schema": "^0.36.0",
 		"effect": "^2.0.0-next.19"
 	},
 	"devDependencies": {
