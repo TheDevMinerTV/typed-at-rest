@@ -69,7 +69,7 @@ export const makeClient = <D extends EndpointDefinition<any>>(base: string, endp
 				const body = Fn.pipe(
 					rawBody,
 					S.encodeEither(def.request),
-					Either.mapRight(
+					Either.map(
 						(errors) => `Could not encode request body with schema: ${formatErrors(errors.errors)}`
 					),
 					Either.mapLeft((encoded) => JSON.stringify(encoded))
