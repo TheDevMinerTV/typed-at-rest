@@ -4,6 +4,7 @@
 	"private": true,
 	"packageManager": "pnpm@8.7.5",
 	"devDependencies": {
+		"@changesets/cli": "^2.26.2",
 		"@typescript-eslint/eslint-plugin": "^6.7.0",
 		"@typescript-eslint/parser": "^6.7.0",
 		"eslint": "^8.49.0",
@@ -16,6 +17,7 @@
 		"dev": "turbo dev",
 		"build": "turbo build",
 		"lint": "turbo lint",
-		"test": "turbo test"
+		"test": "turbo test",
+		"release": "pnpm run build && changeset publish"
 	}
 }

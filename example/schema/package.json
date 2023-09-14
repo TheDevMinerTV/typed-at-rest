@@ -1,6 +1,5 @@
 {
 	"name": "@typed-at-rest/example-schema",
-	"version": "0.1.0",
 	"private": true,
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
