@@ -11,6 +11,6 @@ export const newEmptyOptional = () => ({ filled: false, value: null } as const);
 
 export const OptionalSchema = <In, Out>(schema: S.Schema<In, Out>) =>
 	S.union(FilledOptionalSchema(schema), EmptyOptionalSchema);
-export type Optional<In, Out> = S.To<ReturnType<typeof OptionalSchema<In, Out>>>;
+export type Optional<In, Out> = S.Schema.To<ReturnType<typeof OptionalSchema<In, Out>>>;
 export const optionalFromNullable = <T>(value: T | null | undefined) =>
 	value === null || value === undefined ? newEmptyOptional() : newFilledOptional(value);

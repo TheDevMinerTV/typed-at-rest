@@ -11,12 +11,12 @@ export const APIErrorSchema = S.struct({
 	code: S.number,
 	message: S.string,
 });
-export type APIError = S.To<typeof APIErrorSchema>;
-export const makeAPIError = (code: number, message: string): APIError => ({ code, message } as const);
+export type APIError = S.Schema.To<typeof APIErrorSchema>;
+export const makeAPIError = (code: number, message: string): APIError => ({ code, message }) as const;
 export const makeAPIErrResult = (code: number, message: string) => makeErrResult(makeAPIError(code, message));
 
 export const APIResultSchema = <In, Out>(inner: S.Schema<In, Out>) => ResultSchema(inner, APIErrorSchema);
-export type APIResult<In, Out> = S.To<ReturnType<typeof APIResultSchema<In, Out>>>;
+export type APIResult<In, Out> = S.Schema.To<ReturnType<typeof APIResultSchema<In, Out>>>;
 
 export type HTTPMethod = "GET" | "DELETE" | "POST" | "PATCH" | "PUT";
 
