@@ -12,11 +12,11 @@
 	"dependencies": {
 		"@typed-at-rest/core": "workspace:*",
 		"@typed-at-rest/server": "workspace:*",
-		"next": "^13.4.10"
+		"next": "^13.4.19"
 	},
 	"devDependencies": {
 		"@typed-at-rest/tsconfig": "workspace:*",
-		"@types/node": "^18.16.19",
-		"tsup": "^7.1.0"
+		"@types/node": "^18.17.15",
+		"tsup": "^7.2.0"
 	}
 }

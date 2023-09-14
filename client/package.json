@@ -10,12 +10,12 @@
 		"build": "tsup src/index.ts --format cjs,esm --dts-resolve --minify --sourcemap"
 	},
 	"dependencies": {
-		"@effect/schema": "^0.36.0",
+		"@effect/schema": "^0.36.1",
 		"@typed-at-rest/core": "workspace:*",
-		"effect": "^2.0.0-next.19"
+		"effect": "2.0.0-next.32"
 	},
 	"devDependencies": {
 		"@typed-at-rest/tsconfig": "workspace:*",
-		"tsup": "^7.1.0"
+		"tsup": "^7.2.0"
 	}
 }
