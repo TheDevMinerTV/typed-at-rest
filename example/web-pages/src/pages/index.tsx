@@ -2,7 +2,7 @@ import { inferSuccessResponse, makeClient } from "@typed-at-rest/client";
 import { PagesDemoEndpoint } from "@typed-at-rest/example-schema";
 import { useEffect, useState } from "react";
 
-export function PagesDemo() {
+function PagesDemo() {
 	const client = makeClient(typeof window === "undefined" ? "" : window.location.origin, PagesDemoEndpoint);
 	const [res, setRes] = useState<inferSuccessResponse<typeof client, "GET"> | null>(null);
 
