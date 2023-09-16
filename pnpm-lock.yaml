@@ -37,13 +37,13 @@ importers:
     dependencies:
       '@effect/schema':
         specifier: ^0.36.1
-        version: 0.36.1(@effect/data@0.18.5)(@effect/io@0.40.1)
+        version: 0.36.1(@effect/data@0.18.5)(@effect/io@0.40.3)
       '@typed-at-rest/core':
         specifier: workspace:*
         version: link:../core
       effect:
-        specifier: 2.0.0-next.33
-        version: 2.0.0-next.33(@effect/data@0.18.5)(@effect/io@0.40.1)(@effect/match@0.35.2)(@effect/stm@0.24.0)(@effect/stream@0.36.0)
+        specifier: 2.0.0-next.34
+        version: 2.0.0-next.34(@effect/data@0.18.5)(@effect/io@0.40.3)(@effect/match@0.35.2)(@effect/stm@0.24.0)(@effect/stream@0.36.1)
     devDependencies:
       '@typed-at-rest/tsconfig':
         specifier: workspace:*
@@ -56,10 +56,10 @@ importers:
     dependencies:
       '@effect/schema':
         specifier: ^0.36.1
-        version: 0.36.1(@effect/data@0.18.5)(@effect/io@0.40.1)
+        version: 0.36.1(@effect/data@0.18.5)(@effect/io@0.40.3)
       effect:
-        specifier: 2.0.0-next.33
-        version: 2.0.0-next.33(@effect/data@0.18.5)(@effect/io@0.40.1)(@effect/match@0.35.2)(@effect/stm@0.24.0)(@effect/stream@0.36.0)
+        specifier: 2.0.0-next.34
+        version: 2.0.0-next.34(@effect/data@0.18.5)(@effect/io@0.40.3)(@effect/match@0.35.2)(@effect/stm@0.24.0)(@effect/stream@0.36.1)
     devDependencies:
       '@typed-at-rest/tsconfig':
         specifier: workspace:*
@@ -218,13 +218,13 @@ importers:
     dependencies:
       '@effect/schema':
         specifier: ^0.36.1
-        version: 0.36.1(@effect/data@0.18.5)(@effect/io@0.40.1)
+        version: 0.36.1(@effect/data@0.18.5)(@effect/io@0.40.3)
       '@typed-at-rest/core':
         specifier: workspace:*
         version: link:../core
       effect:
-        specifier: 2.0.0-next.33
-        version: 2.0.0-next.33(@effect/data@0.18.5)(@effect/io@0.40.1)(@effect/match@0.35.2)(@effect/stm@0.24.0)(@effect/stream@0.36.0)
+        specifier: 2.0.0-next.34
+        version: 2.0.0-next.34(@effect/data@0.18.5)(@effect/io@0.40.3)(@effect/match@0.35.2)(@effect/stm@0.24.0)(@effect/stream@0.36.1)
     devDependencies:
       '@typed-at-rest/tsconfig':
         specifier: workspace:*
@@ -533,6 +533,14 @@ packages:
       '@effect/data': 0.18.5
     dev: false
 
+  /@effect/io@0.40.3(@effect/data@0.18.5):
+    resolution: {integrity: sha512-bnHBFq1XzXn94x2w5FcXZz3MbY7N3YrhiI2CrncJr3WcGRDc2rCYIpPupw0JQGFcJsoopTj1BNfBuBR5s4/RyA==}
+    peerDependencies:
+      '@effect/data': ^0.18.5
+    dependencies:
+      '@effect/data': 0.18.5
+    dev: false
+
   /@effect/match@0.35.2(@effect/data@0.18.5):
     resolution: {integrity: sha512-2zZhWIdejX3xqbjormykBveHZTB/DBr/u/XBj5Ln6u2ShbMvoUykgVEscQLN3CsQeHDS14Vvr1DOvH0qeMILZQ==}
     peerDependencies:
@@ -552,24 +560,35 @@ packages:
       fast-check: 3.13.0
     dev: false
 
-  /@effect/stm@0.24.0(@effect/data@0.18.5)(@effect/io@0.40.1):
+  /@effect/schema@0.36.1(@effect/data@0.18.5)(@effect/io@0.40.3):
+    resolution: {integrity: sha512-sBF5PNe5zZ2OzqABDkhvnUPoJ78be1tI7ByDYMO9rPa8paB28Ku/1OveXJda68YO15Jb4F4Z/IuRGYiEFZNHEA==}
+    peerDependencies:
+      '@effect/data': ^0.18.5
+      '@effect/io': ^0.40.1
+    dependencies:
+      '@effect/data': 0.18.5
+      '@effect/io': 0.40.3(@effect/data@0.18.5)
+      fast-check: 3.13.0
+    dev: false
+
+  /@effect/stm@0.24.0(@effect/data@0.18.5)(@effect/io@0.40.3):
     resolution: {integrity: sha512-6L4zhy2lvkxn3jMG7dvZ4lKOmxSvaNBpkIT/ZOS6mad+B5/r8G3bKFe0C70aHwpQkxORd9LVmFr/f5MXLKZtfQ==}
     peerDependencies:
       '@effect/data': ^0.18.3
       '@effect/io': ^0.40.0
     dependencies:
       '@effect/data': 0.18.5
-      '@effect/io': 0.40.1(@effect/data@0.18.5)
+      '@effect/io': 0.40.3(@effect/data@0.18.5)
     dev: false
 
-  /@effect/stream@0.36.0(@effect/data@0.18.5)(@effect/io@0.40.1):
-    resolution: {integrity: sha512-vAMQ3kumsAXAiAwtuzJEOeII2bAB9rNY1NLYOqpgvXVWTUIYQf/wy4QbbcLXLuoMUUi7zS/JDVmC8jbPscfLNg==}
+  /@effect/stream@0.36.1(@effect/data@0.18.5)(@effect/io@0.40.3):
+    resolution: {integrity: sha512-gF/RzTBGgghCA+lcgYFkHW/ozozyOfx4hrGhKWspkjMXyc4B7p0E7dsHO14byTZtUD/JAXvrekvVX8uV7i8Zzw==}
     peerDependencies:
       '@effect/data': ^0.18.3
       '@effect/io': ^0.40.0
     dependencies:
       '@effect/data': 0.18.5
-      '@effect/io': 0.40.1(@effect/data@0.18.5)
+      '@effect/io': 0.40.3(@effect/data@0.18.5)
     dev: false
 
   /@esbuild-kit/cjs-loader@2.4.2:
@@ -1876,20 +1895,20 @@ packages:
       esutils: 2.0.3
     dev: true
 
-  /effect@2.0.0-next.33(@effect/data@0.18.5)(@effect/io@0.40.1)(@effect/match@0.35.2)(@effect/stm@0.24.0)(@effect/stream@0.36.0):
-    resolution: {integrity: sha512-Sf4OhKLliWr9nHkejPvrBsgsMER++8ns6VGsqHF2dTVnSa9I9B/MsicEibcXPhhCuL5dXKAgXhjkNzmRLDVr8g==}
+  /effect@2.0.0-next.34(@effect/data@0.18.5)(@effect/io@0.40.3)(@effect/match@0.35.2)(@effect/stm@0.24.0)(@effect/stream@0.36.1):
+    resolution: {integrity: sha512-7yX9IZK81ZZrdSX1zM/Iut1yTHbzbhmNVyQkztbU3X3ugCCsSi70/ZWzpeyLkk/O+JpPqf1lJKVLfdDFuOnV8Q==}
     peerDependencies:
       '@effect/data': ^0.18.5
-      '@effect/io': ^0.40.1
+      '@effect/io': ^0.40.3
       '@effect/match': ^0.35.2
       '@effect/stm': ^0.24.0
-      '@effect/stream': ^0.36.0
+      '@effect/stream': ^0.36.1
     dependencies:
       '@effect/data': 0.18.5
-      '@effect/io': 0.40.1(@effect/data@0.18.5)
+      '@effect/io': 0.40.3(@effect/data@0.18.5)
       '@effect/match': 0.35.2(@effect/data@0.18.5)
-      '@effect/stm': 0.24.0(@effect/data@0.18.5)(@effect/io@0.40.1)
-      '@effect/stream': 0.36.0(@effect/data@0.18.5)(@effect/io@0.40.1)
+      '@effect/stm': 0.24.0(@effect/data@0.18.5)(@effect/io@0.40.3)
+      '@effect/stream': 0.36.1(@effect/data@0.18.5)(@effect/io@0.40.3)
     dev: false
 
   /emoji-regex@8.0.0:
