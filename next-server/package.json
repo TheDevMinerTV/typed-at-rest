@@ -11,7 +11,9 @@
 	},
 	"dependencies": {
 		"@typed-at-rest/core": "workspace:*",
-		"@typed-at-rest/server": "workspace:*",
+		"@typed-at-rest/server": "workspace:*"
+	},
+	"peerDependencies": {
 		"next": "^13.4.19"
 	},
 	"devDependencies": {
