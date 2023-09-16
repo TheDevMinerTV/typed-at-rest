@@ -13,8 +13,6 @@ import {
 	makeAPIErrResult,
 } from "@typed-at-rest/core";
 import { Effect } from "effect";
-import * as Either from "effect/Either";
-import * as Fn from "effect/Function";
 
 type MethodResult<MD> = Promise<inferResponse<MD>>;
 
@@ -47,49 +45,42 @@ export const makeClient = <D extends EndpointDefinition<any>>(base: string, endp
 
 		// @ts-expect-error these signatures match
 		client[method] = async function (...args: any[]) {
-			const opts: RequestInit = {
-				method: method,
-			};
+			const v = Effect.gen(function* (_) {
+				const opts: RequestInit = { method: method, };
 
-			let token: string | undefined;
+				let token: string | undefined;
+				if (def.auth) token = args.shift();
 
-			if (def.auth) {
-				token = args.shift();
-			}
+				const params = args.shift() as inferParams<D>;
+				const path = endpoint.path.encode(params);
+				const url = new URL(path, base);
 
-			const params = args.shift() as inferParams<D>;
-			const path = endpoint.path.encode(params);
-			const url = new URL(path, base);
+				const shouldBeBodyless = method === "GET" || method === "DELETE";
 
-			const shouldBeBodyless = method === "GET" || method === "DELETE";
+				if (!shouldBeBodyless && "request" in def) {
+					opts.body = yield* _(
+						args.shift(),
+						S.encode(def.request),
+						Effect.mapError((errors) =>
+							makeAPIErrResult(
+								4000,
+								`Could not encode request body with schema: ${formatErrors(errors.errors)}`,
+							),
+						),
+						Effect.map((encoded) => JSON.stringify(encoded)),
+					);
 
-			if (!shouldBeBodyless && "request" in def) {
-				const rawBody = args.shift();
+					opts.headers = {
+						...(def.auth ? { Cookie: `token=${token}` } : {}),
+						...opts.headers,
+						"Content-Type": "application/json",
+					};
+				}
 
-				const body = Fn.pipe(
-					rawBody,
-					S.encodeEither(def.request),
-					Either.map(
-						(errors) => `Could not encode request body with schema: ${formatErrors(errors.errors)}`
-					),
-					Either.mapLeft((encoded) => JSON.stringify(encoded))
-				);
+				const response = yield* _(Effect.promise(() => fetch(url, opts)));
+				const raw = yield* _(Effect.promise(() => response.text()));
 
-				if (Either.isLeft(body)) return makeAPIErrResult(4000, body.left);
-
-				opts.body = body.right;
-				opts.headers = {
-					...(def.auth ? { Cookie: `token=${token}` } : {}),
-					...opts.headers,
-					"Content-Type": "application/json",
-				};
-			}
-
-			const response = await fetch(url, opts);
-			const raw = await response.text();
-
-			const v = Effect.runSync(
-				Fn.pipe(
+				const v = yield* _(
 					Effect.try({
 						try: () => JSON.parse(raw) as unknown,
 						catch: () => makeAPIErrResult(5000, `Could not parse json: ${raw}`),
@@ -98,11 +89,12 @@ export const makeClient = <D extends EndpointDefinition<any>>(base: string, endp
 					Effect.mapError((errors) =>
 						"_tag" in errors && errors._tag === "ParseError"
 							? makeAPIErrResult(5000, `Could not parse json with schema: ${formatErrors(errors.errors)}`)
-							: (errors as APIResult<any, any>)
+							: (errors as APIResult<any, any>),
 					),
-					Effect.merge
-				)
-			);
+				);
+
+				return v;
+			}).pipe(Effect.merge, Effect.runPromise);
 
 			return v;
 		};
