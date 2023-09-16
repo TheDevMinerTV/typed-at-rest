@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import * as S from "@effect/schema/Schema";
-import { ResultSchema, inferOkResult, makeErrResult } from "./result";
+import { Result, ResultSchema, WrappedError, inferOkResult, makeErrResult } from "./result";
 
 export * from "./optional";
 export * from "./result";
@@ -17,6 +17,21 @@ export const makeAPIErrResult = (code: number, message: string) => makeErrResult
 
 export const APIResultSchema = <In, Out>(inner: S.Schema<In, Out>) => ResultSchema(inner, APIErrorSchema);
 export type APIResult<In, Out> = S.Schema.To<ReturnType<typeof APIResultSchema<In, Out>>>;
+
+export class TypedError extends WrappedError<APIError> {
+	readonly code: number;
+
+	constructor(inner: APIError) {
+		super(inner.message, inner);
+		this.code = inner.code;
+	}
+}
+
+export const unwrapAPIResult = <T>(a: Result<unknown, T, unknown, APIError>) => {
+	if (!a.ok) throw new TypedError(a.error);
+
+	return a.data;
+};
 
 export type HTTPMethod = "GET" | "DELETE" | "POST" | "PATCH" | "PUT";
 
