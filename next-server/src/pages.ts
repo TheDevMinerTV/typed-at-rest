@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { EndpointDefinition, HTTPMethod } from "@typed-at-rest/core";
-import { EndpointHandlers, handleCoreRequest, } from "@typed-at-rest/server";
+import { EndpointHandlers, handleCoreRequest } from "@typed-at-rest/server";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export const makeNextPagesHandler = <ED extends EndpointDefinition<any>>(

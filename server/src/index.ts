@@ -18,7 +18,7 @@ import { Effect } from "effect";
 type Handler<Params extends Record<string, any>, Body, ResponseData, Request> = (
 	request: Request,
 	params: Params,
-	body: Body,
+	body: Body
 ) => Promise<APIResult<any, ResponseData>>;
 
 type createHandlerFn<RD, Params extends Record<string, any>, Request> = RD extends WithRequest<any, any>
@@ -35,7 +35,7 @@ export const handleCoreRequest = async <ED extends EndpointDefinition<any>>(
 	method: HTTPMethod,
 	rawUrl: string,
 	body: unknown,
-	request: any,
+	request: any
 ) =>
 	Effect.gen(function* (_) {
 		type Body = inferRequest<ED["methods"][typeof method]>;
@@ -60,8 +60,8 @@ export const handleCoreRequest = async <ED extends EndpointDefinition<any>>(
 			query,
 			S.parse(endpoint.path.schema),
 			Effect.mapError((errors) =>
-				makeAPIErrResult(400, `Could not parse query params with schema: ${formatErrors(errors.errors)}`),
-			),
+				makeAPIErrResult(400, `Could not parse query params with schema: ${formatErrors(errors.errors)}`)
+			)
 		);
 
 		let validated: Body | undefined = undefined;
@@ -70,8 +70,8 @@ export const handleCoreRequest = async <ED extends EndpointDefinition<any>>(
 				body,
 				S.parse(r.request),
 				Effect.mapError((errors) =>
-					makeAPIErrResult(400, `Could not parse json with schema: ${formatErrors(errors.errors)}`),
-				),
+					makeAPIErrResult(400, `Could not parse json with schema: ${formatErrors(errors.errors)}`)
+				)
 			);
 		}
 
@@ -82,13 +82,13 @@ export const handleCoreRequest = async <ED extends EndpointDefinition<any>>(
 					params,
 					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 					// @ts-ignore
-					validated,
-				),
+					validated
+				)
 			),
 			Effect.flatMap(S.encode(APIResultSchema(r.response))),
 			Effect.mapError((e) =>
-				makeAPIErrResult(500, `Could not encode response with schema: ${formatErrors(e.errors)}`),
-			),
+				makeAPIErrResult(500, `Could not encode response with schema: ${formatErrors(e.errors)}`)
+			)
 		);
 
 		return res;

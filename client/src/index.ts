@@ -46,7 +46,7 @@ export const makeClient = <D extends EndpointDefinition<any>>(base: string, endp
 		// @ts-expect-error these signatures match
 		client[method] = async function (...args: any[]) {
 			const v = Effect.gen(function* (_) {
-				const opts: RequestInit = { method: method, };
+				const opts: RequestInit = { method: method };
 
 				let token: string | undefined;
 				if (def.auth) token = args.shift();
@@ -64,10 +64,10 @@ export const makeClient = <D extends EndpointDefinition<any>>(base: string, endp
 						Effect.mapError((errors) =>
 							makeAPIErrResult(
 								4000,
-								`Could not encode request body with schema: ${formatErrors(errors.errors)}`,
-							),
+								`Could not encode request body with schema: ${formatErrors(errors.errors)}`
+							)
 						),
-						Effect.map((encoded) => JSON.stringify(encoded)),
+						Effect.map((encoded) => JSON.stringify(encoded))
 					);
 
 					opts.headers = {
@@ -89,8 +89,8 @@ export const makeClient = <D extends EndpointDefinition<any>>(base: string, endp
 					Effect.mapError((errors) =>
 						"_tag" in errors && errors._tag === "ParseError"
 							? makeAPIErrResult(5000, `Could not parse json with schema: ${formatErrors(errors.errors)}`)
-							: (errors as APIResult<any, any>),
-					),
+							: (errors as APIResult<any, any>)
+					)
 				);
 
 				return v;

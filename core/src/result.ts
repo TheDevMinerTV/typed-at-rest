@@ -19,7 +19,7 @@ export type Result<DIn, DOut, EIn, EOut> = S.Schema.To<ReturnType<typeof ResultS
 export class WrappedError<E> extends Error {
 	constructor(
 		error: string,
-		public readonly inner: E,
+		public readonly inner: E
 	) {
 		super(error);
 	}
