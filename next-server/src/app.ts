@@ -33,7 +33,6 @@ export const makeNextAppHandler = <ED extends EndpointDefinition<any>>(
 			// TODO: Handle error
 			const handlerResponse = await handleCoreRequest(endpoint, handlers, m, req.url, bodyIn, req);
 
-			console.log(handlerResponse);
 			const body = JSON.stringify(handlerResponse);
 
 			return new Response(body, {
