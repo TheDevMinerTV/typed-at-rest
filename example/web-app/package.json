@@ -12,8 +12,8 @@
 		"@typed-at-rest/core": "workspace:*",
 		"@typed-at-rest/example-schema": "workspace:*",
 		"@typed-at-rest/next-server": "workspace:*",
-		"@types/node": "^18.16.19",
-		"next": "^13.4.19",
+		"@types/node": "^18.18.5",
+		"next": "^13.5.4",
 		"react": "18.2.0",
 		"react-dom": "18.2.0"
 	},

@@ -8,13 +8,12 @@
 	},
 	"dependencies": {
 		"@typed-at-rest/client": "workspace:*",
-		"@typed-at-rest/example-schema": "workspace:*",
-		"discord.js": "^14.13.0"
+		"@typed-at-rest/example-schema": "workspace:*"
 	},
 	"devDependencies": {
 		"@typed-at-rest/tsconfig": "workspace:*",
-		"@types/node": "^18.17.15",
-		"tsx": "^3.12.10",
+		"@types/node": "^18.18.5",
+		"tsx": "^3.13.0",
 		"tsup": "^7.2.0"
 	}
 }

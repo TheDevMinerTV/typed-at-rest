@@ -14,11 +14,11 @@
 		"@typed-at-rest/server": "workspace:*"
 	},
 	"peerDependencies": {
-		"next": "^13.4.19"
+		"next": "^13.5.4"
 	},
 	"devDependencies": {
 		"@typed-at-rest/tsconfig": "workspace:*",
-		"@types/node": "^18.17.15",
+		"@types/node": "^18.18.5",
 		"tsup": "^7.2.0"
 	}
 }
