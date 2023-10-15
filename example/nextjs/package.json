@@ -1,8 +1,8 @@
 {
-	"name": "@typed-at-rest/example-web-pages",
+	"name": "@typed-at-rest/example-nextjs-app",
 	"private": true,
 	"scripts": {
-		"dev": "next dev -p 3001",
+		"dev": "next dev -p 3000",
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint"
@@ -12,13 +12,13 @@
 		"@typed-at-rest/core": "workspace:*",
 		"@typed-at-rest/example-schema": "workspace:*",
 		"@typed-at-rest/next-server": "workspace:*",
+		"@types/node": "^18.18.5",
 		"next": "^13.5.4",
 		"react": "18.2.0",
 		"react-dom": "18.2.0"
 	},
 	"devDependencies": {
 		"@typed-at-rest/tsconfig": "workspace:*",
-		"@types/node": "^18.18.5",
 		"@types/react": "18.2.28",
 		"@types/react-dom": "18.2.13",
 		"typescript": "^5.2.2"

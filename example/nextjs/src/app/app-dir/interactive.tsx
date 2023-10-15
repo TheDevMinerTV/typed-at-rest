@@ -2,6 +2,7 @@
 
 import { inferSuccessResponse, makeClient } from "@typed-at-rest/client";
 import { AppDirDemoEndpoint } from "@typed-at-rest/example-schema";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export function AppDirDemo() {
@@ -14,5 +15,11 @@ export function AppDirDemo() {
 		});
 	}, []);
 
-	return <div>{res?.message}</div>;
+	return (
+		<>
+			<Link href="/">Back</Link>
+
+			{res && <pre>{res.message}</pre>}
+		</>
+	);
 }

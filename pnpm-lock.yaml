@@ -90,6 +90,46 @@ importers:
         specifier: ^3.13.0
         version: 3.13.0
 
+  example/nextjs:
+    dependencies:
+      '@typed-at-rest/client':
+        specifier: workspace:*
+        version: link:../../client
+      '@typed-at-rest/core':
+        specifier: workspace:*
+        version: link:../../core
+      '@typed-at-rest/example-schema':
+        specifier: workspace:*
+        version: link:../schema
+      '@typed-at-rest/next-server':
+        specifier: workspace:*
+        version: link:../../next-server
+      '@types/node':
+        specifier: ^18.18.5
+        version: 18.18.5
+      next:
+        specifier: ^13.5.4
+        version: 13.5.4(react-dom@18.2.0)(react@18.2.0)
+      react:
+        specifier: 18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: 18.2.0
+        version: 18.2.0(react@18.2.0)
+    devDependencies:
+      '@typed-at-rest/tsconfig':
+        specifier: workspace:*
+        version: link:../../tsconfig
+      '@types/react':
+        specifier: 18.2.28
+        version: 18.2.28
+      '@types/react-dom':
+        specifier: 18.2.13
+        version: 18.2.13
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
+
   example/schema:
     dependencies:
       '@effect/schema':
@@ -108,86 +148,6 @@ importers:
       tsx:
         specifier: ^3.13.0
         version: 3.13.0
-
-  example/web-app:
-    dependencies:
-      '@typed-at-rest/client':
-        specifier: workspace:*
-        version: link:../../client
-      '@typed-at-rest/core':
-        specifier: workspace:*
-        version: link:../../core
-      '@typed-at-rest/example-schema':
-        specifier: workspace:*
-        version: link:../schema
-      '@typed-at-rest/next-server':
-        specifier: workspace:*
-        version: link:../../next-server
-      '@types/node':
-        specifier: ^18.18.5
-        version: 18.18.5
-      next:
-        specifier: ^13.5.4
-        version: 13.5.4(react-dom@18.2.0)(react@18.2.0)
-      react:
-        specifier: 18.2.0
-        version: 18.2.0
-      react-dom:
-        specifier: 18.2.0
-        version: 18.2.0(react@18.2.0)
-    devDependencies:
-      '@typed-at-rest/tsconfig':
-        specifier: workspace:*
-        version: link:../../tsconfig
-      '@types/react':
-        specifier: 18.2.28
-        version: 18.2.28
-      '@types/react-dom':
-        specifier: 18.2.13
-        version: 18.2.13
-      typescript:
-        specifier: ^5.2.2
-        version: 5.2.2
-
-  example/web-pages:
-    dependencies:
-      '@typed-at-rest/client':
-        specifier: workspace:*
-        version: link:../../client
-      '@typed-at-rest/core':
-        specifier: workspace:*
-        version: link:../../core
-      '@typed-at-rest/example-schema':
-        specifier: workspace:*
-        version: link:../schema
-      '@typed-at-rest/next-server':
-        specifier: workspace:*
-        version: link:../../next-server
-      next:
-        specifier: ^13.5.4
-        version: 13.5.4(react-dom@18.2.0)(react@18.2.0)
-      react:
-        specifier: 18.2.0
-        version: 18.2.0
-      react-dom:
-        specifier: 18.2.0
-        version: 18.2.0(react@18.2.0)
-    devDependencies:
-      '@typed-at-rest/tsconfig':
-        specifier: workspace:*
-        version: link:../../tsconfig
-      '@types/node':
-        specifier: ^18.18.5
-        version: 18.18.5
-      '@types/react':
-        specifier: 18.2.28
-        version: 18.2.28
-      '@types/react-dom':
-        specifier: 18.2.13
-        version: 18.2.13
-      typescript:
-        specifier: ^5.2.2
-        version: 5.2.2
 
   next-server:
     dependencies:

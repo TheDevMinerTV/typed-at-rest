@@ -1,4 +1,4 @@
-import { AppDirDemo } from "./component";
+import { AppDirDemo } from "./interactive";
 
 export default function AppDirDemoPage() {
 	return (
