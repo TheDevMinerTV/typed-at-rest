@@ -37,13 +37,13 @@ importers:
     dependencies:
       '@effect/schema':
         specifier: ^0.43.2
-        version: 0.43.2(effect@2.0.0-next.48)(fast-check@3.13.1)
+        version: 0.43.2(effect@2.0.0-next.52)(fast-check@3.13.1)
       '@typed-at-rest/core':
         specifier: workspace:*
         version: link:../core
       effect:
-        specifier: 2.0.0-next.48
-        version: 2.0.0-next.48
+        specifier: 2.0.0-next.52
+        version: 2.0.0-next.52
     devDependencies:
       '@typed-at-rest/tsconfig':
         specifier: workspace:*
@@ -56,10 +56,10 @@ importers:
     dependencies:
       '@effect/schema':
         specifier: ^0.43.2
-        version: 0.43.2(effect@2.0.0-next.48)(fast-check@3.13.1)
+        version: 0.43.2(effect@2.0.0-next.52)(fast-check@3.13.1)
       effect:
-        specifier: 2.0.0-next.48
-        version: 2.0.0-next.48
+        specifier: 2.0.0-next.52
+        version: 2.0.0-next.52
     devDependencies:
       '@typed-at-rest/tsconfig':
         specifier: workspace:*
@@ -175,13 +175,13 @@ importers:
     dependencies:
       '@effect/schema':
         specifier: ^0.43.2
-        version: 0.43.2(effect@2.0.0-next.48)(fast-check@3.13.1)
+        version: 0.43.2(effect@2.0.0-next.52)(fast-check@3.13.1)
       '@typed-at-rest/core':
         specifier: workspace:*
         version: link:../core
       effect:
-        specifier: 2.0.0-next.48
-        version: 2.0.0-next.48
+        specifier: 2.0.0-next.52
+        version: 2.0.0-next.52
     devDependencies:
       '@typed-at-rest/tsconfig':
         specifier: workspace:*
@@ -422,6 +422,16 @@ packages:
       fast-check: ^3.13.1
     dependencies:
       effect: 2.0.0-next.48
+      fast-check: 3.13.1
+    dev: false
+
+  /@effect/schema@0.43.2(effect@2.0.0-next.52)(fast-check@3.13.1):
+    resolution: {integrity: sha512-xXmRYsL/ykbrMeP+7HYx3O2xAfaa64VJQiPW+ml8xbP2QDAZbOO1uedSqHkIMK3Xzh49KLR4JprR1vGPf4EZ9A==}
+    peerDependencies:
+      effect: 2.0.0-next.48
+      fast-check: ^3.13.1
+    dependencies:
+      effect: 2.0.0-next.52
       fast-check: 3.13.1
     dev: false
 
@@ -1646,6 +1656,10 @@ packages:
 
   /effect@2.0.0-next.48:
     resolution: {integrity: sha512-vwMIl39m8fMBeXoGIdSwMi2lrg7NltyrGMK0N/liGDl7G9LXvERKOCipNcobSIGO0V7hjaXEWgL6W/KEWEww+g==}
+    dev: false
+
+  /effect@2.0.0-next.52:
+    resolution: {integrity: sha512-6VmmfS6xyOZsJRT0hcEsMx03HxXSeG/VmcniDvVw0nzBudlu+4qUvj8GBGYVFVgJfKcISSRey0tzfO9HXIzApg==}
     dev: false
 
   /emoji-regex@8.0.0:
