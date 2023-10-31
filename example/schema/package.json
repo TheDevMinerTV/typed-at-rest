@@ -9,12 +9,12 @@
 		"build": "tsup src/index.ts --format cjs,esm --minify --dts-resolve"
 	},
 	"dependencies": {
-		"@effect/schema": "^0.43.2",
+		"@effect/schema": "^0.46.3",
 		"@typed-at-rest/core": "workspace:*"
 	},
 	"devDependencies": {
 		"@typed-at-rest/tsconfig": "workspace:*",
-		"tsx": "^3.13.0",
+		"tsx": "^3.14.0",
 		"tsup": "^7.2.0"
 	}
 }
