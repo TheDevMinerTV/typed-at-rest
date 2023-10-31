@@ -1,5 +1,16 @@
 # @typed-at-rest/next-server
 
+## 0.1.3
+
+### Patch Changes
+
+- a614f57: removed logging of the response
+- 871fcf7: bumped dependencies
+- Updated dependencies [9e0f4d4]
+- Updated dependencies [871fcf7]
+  - @typed-at-rest/core@0.1.3
+  - @typed-at-rest/server@0.1.3
+
 ## 0.1.2
 
 ### Patch Changes
