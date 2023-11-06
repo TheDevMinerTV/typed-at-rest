@@ -19,7 +19,7 @@
 	},
 	"devDependencies": {
 		"@typed-at-rest/tsconfig": "workspace:*",
-		"@types/react": "18.2.33",
+		"@types/react": "18.2.36",
 		"@types/react-dom": "18.2.14",
 		"typescript": "^5.2.2"
 	}
