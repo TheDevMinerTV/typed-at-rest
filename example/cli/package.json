@@ -14,6 +14,6 @@
 		"@typed-at-rest/tsconfig": "workspace:*",
 		"@types/node": "^18.18.8",
 		"tsx": "^4.0.0",
-		"tsup": "^7.2.0"
+		"tsup": "^8.0.0"
 	}
 }
