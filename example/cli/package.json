@@ -1,0 +1,19 @@
+{
+	"name": "@typed-at-rest/example-cli",
+	"private": true,
+	"main": "dist/index.js",
+	"scripts": {
+		"dev": "tsx watch --clear-screen=false src/index.ts",
+		"build": "tsup src/index.ts --format cjs --minify --dts-resolve"
+	},
+	"dependencies": {
+		"@typed-at-rest/client": "workspace:*",
+		"@typed-at-rest/example-schema": "workspace:*"
+	},
+	"devDependencies": {
+		"@typed-at-rest/tsconfig": "workspace:*",
+		"@types/node": "^18.19.17",
+		"tsx": "^4.7.1",
+		"tsup": "^8.0.2"
+	}
+}

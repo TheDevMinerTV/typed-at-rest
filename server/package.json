@@ -1,0 +1,22 @@
+{
+	"name": "@typed-at-rest/server",
+	"license": "MIT",
+	"version": "0.0.1",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"module": "dist/index.mjs",
+	"scripts": {
+		"dev": "tsup src/index.ts --format cjs,esm --dts-resolve --watch --sourcemap",
+		"build": "tsup src/index.ts --format cjs,esm --dts-resolve --minify --sourcemap"
+	},
+	"dependencies": {
+		"@effect/schema": "^0.62.9",
+		"@typed-at-rest/core": "workspace:*",
+		"effect": "2.3.8"
+	},
+	"devDependencies": {
+		"@typed-at-rest/tsconfig": "workspace:*",
+		"@types/node": "^18.19.17",
+		"tsup": "^8.0.2"
+	}
+}

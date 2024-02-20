@@ -1,0 +1,9 @@
+{
+	"extends": "@typed-at-rest/tsconfig/base.json",
+	"include": ["src"],
+	"exclude": ["node_modules", "**/__tests__/*"],
+	"compilerOptions": {
+		"lib": ["es2020", "dom"],
+		"outDir": "./dist"
+	}
+}

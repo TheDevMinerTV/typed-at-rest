@@ -1,0 +1,7 @@
+packages:
+  - core
+  - server
+  - client
+  - next-server
+  - tsconfig
+  - example/*
