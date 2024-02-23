@@ -1,7 +1,7 @@
 {
 	"name": "@typed-at-rest/client",
 	"license": "MIT",
-	"version": "0.1.0",
+	"version": "0.1.5",
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
 	"types": "dist/index.d.ts",
