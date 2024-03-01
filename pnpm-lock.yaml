@@ -37,7 +37,7 @@ importers:
     dependencies:
       '@effect/schema':
         specifier: ^0.63.0
-        version: 0.63.1(effect@2.4.0)(fast-check@3.15.1)
+        version: 0.63.2(effect@2.4.0)(fast-check@3.15.1)
       '@typed-at-rest/core':
         specifier: workspace:*
         version: link:../core
@@ -56,7 +56,7 @@ importers:
     dependencies:
       '@effect/schema':
         specifier: ^0.63.0
-        version: 0.63.1(effect@2.4.0)(fast-check@3.15.1)
+        version: 0.63.2(effect@2.4.0)(fast-check@3.15.1)
       effect:
         specifier: 2.4.0
         version: 2.4.0
@@ -134,7 +134,7 @@ importers:
     dependencies:
       '@effect/schema':
         specifier: ^0.63.0
-        version: 0.63.1(effect@2.4.0)(fast-check@3.15.1)
+        version: 0.63.2(effect@2.4.1)(fast-check@3.15.1)
       '@typed-at-rest/core':
         specifier: workspace:*
         version: link:../../core
@@ -175,7 +175,7 @@ importers:
     dependencies:
       '@effect/schema':
         specifier: ^0.63.0
-        version: 0.63.1(effect@2.4.0)(fast-check@3.15.1)
+        version: 0.63.2(effect@2.4.0)(fast-check@3.15.1)
       '@typed-at-rest/core':
         specifier: workspace:*
         version: link:../core
@@ -414,13 +414,23 @@ packages:
       prettier: 2.8.8
     dev: true
 
-  /@effect/schema@0.63.1(effect@2.4.0)(fast-check@3.15.1):
-    resolution: {integrity: sha512-Vs7g72qbPTLWXZ4jcaPzprfbY1ODZxwqfOTrMhwvSUc6kgt1i2KP88LxFy7dFLJasx3CYPz8MTvP0x8mbBCftw==}
+  /@effect/schema@0.63.2(effect@2.4.0)(fast-check@3.15.1):
+    resolution: {integrity: sha512-piS+6dlGmcX8sAPGXdY4T6QmBbY2YXVnYjUguXpClk6FL7lQ9u2aIDib5kjCpciawJjil2VwltmPnMj0NJKKQQ==}
     peerDependencies:
-      effect: ^2.4.0
+      effect: ^2.4.1
       fast-check: ^3.13.2
     dependencies:
       effect: 2.4.0
+      fast-check: 3.15.1
+    dev: false
+
+  /@effect/schema@0.63.2(effect@2.4.1)(fast-check@3.15.1):
+    resolution: {integrity: sha512-piS+6dlGmcX8sAPGXdY4T6QmBbY2YXVnYjUguXpClk6FL7lQ9u2aIDib5kjCpciawJjil2VwltmPnMj0NJKKQQ==}
+    peerDependencies:
+      effect: ^2.4.1
+      fast-check: ^3.13.2
+    dependencies:
+      effect: 2.4.1
       fast-check: 3.15.1
     dev: false
 
@@ -1757,6 +1767,10 @@ packages:
 
   /effect@2.4.0:
     resolution: {integrity: sha512-HAtFVAbAGYDzfGbrSrX1gzMzXym15zk1+ps72X8W1wdZY0vxq+u23w8u9DhAZjiJPHT4W9ZYL7QWQqpP4t+dSg==}
+    dev: false
+
+  /effect@2.4.1:
+    resolution: {integrity: sha512-YsoMB/EGCohGKFyTPYqaFe2B7UCU2MM303dkoowF8DNOdks/4q/00cyhTbBUmM/0FMDoUPmUi/AJ0Aj3E7vO1A==}
     dev: false
 
   /emoji-regex@8.0.0:
