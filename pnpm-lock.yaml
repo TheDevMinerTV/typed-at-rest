@@ -82,7 +82,7 @@ importers:
         version: link:../../tsconfig
       '@types/node':
         specifier: ^18.19.17
-        version: 18.19.19
+        version: 18.19.20
       tsup:
         specifier: ^8.0.2
         version: 8.0.2(typescript@5.3.3)
@@ -106,7 +106,7 @@ importers:
         version: link:../../next-server
       '@types/node':
         specifier: ^18.19.17
-        version: 18.19.19
+        version: 18.19.20
       next:
         specifier: ^14.1.0
         version: 14.1.0(react-dom@18.2.0)(react@18.2.0)
@@ -166,7 +166,7 @@ importers:
         version: link:../tsconfig
       '@types/node':
         specifier: ^18.19.17
-        version: 18.19.19
+        version: 18.19.20
       tsup:
         specifier: ^8.0.2
         version: 8.0.2(typescript@5.3.3)
@@ -188,7 +188,7 @@ importers:
         version: link:../tsconfig
       '@types/node':
         specifier: ^18.19.17
-        version: 18.19.19
+        version: 18.19.20
       tsup:
         specifier: ^8.0.2
         version: 8.0.2(typescript@5.3.3)
@@ -1160,8 +1160,8 @@ packages:
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
     dev: true
 
-  /@types/node@18.19.19:
-    resolution: {integrity: sha512-qqV6hSy9zACEhQUy5CEGeuXAZN0fNjqLWRIvOXOwdFYhFoKBiY08VKR5kgchr90+TitLVhpUEb54hk4bYaArUw==}
+  /@types/node@18.19.20:
+    resolution: {integrity: sha512-SKXZvI375jkpvAj8o+5U2518XQv76mAsixqfXiVyWyXZbVWQK25RurFovYpVIxVzul0rZoH58V/3SkEnm7s3qA==}
     dependencies:
       undici-types: 5.26.5
 
