@@ -36,8 +36,8 @@ importers:
   client:
     dependencies:
       '@effect/schema':
-        specifier: ^0.63.0
-        version: 0.63.1(effect@2.4.11)(fast-check@3.16.0)
+        specifier: ^0.64.0
+        version: 0.64.11(effect@2.4.11)(fast-check@3.16.0)
       '@typed-at-rest/core':
         specifier: workspace:*
         version: link:../core
@@ -55,8 +55,8 @@ importers:
   core:
     dependencies:
       '@effect/schema':
-        specifier: ^0.63.0
-        version: 0.63.1(effect@2.4.11)(fast-check@3.16.0)
+        specifier: ^0.64.0
+        version: 0.64.11(effect@2.4.11)(fast-check@3.16.0)
       effect:
         specifier: 2.4.11
         version: 2.4.11
@@ -133,8 +133,8 @@ importers:
   example/schema:
     dependencies:
       '@effect/schema':
-        specifier: ^0.63.0
-        version: 0.63.1(effect@2.4.11)(fast-check@3.16.0)
+        specifier: ^0.64.0
+        version: 0.64.11(effect@2.4.11)(fast-check@3.16.0)
       '@typed-at-rest/core':
         specifier: workspace:*
         version: link:../../core
@@ -174,8 +174,8 @@ importers:
   server:
     dependencies:
       '@effect/schema':
-        specifier: ^0.63.0
-        version: 0.63.1(effect@2.4.11)(fast-check@3.16.0)
+        specifier: ^0.64.0
+        version: 0.64.11(effect@2.4.11)(fast-check@3.16.0)
       '@typed-at-rest/core':
         specifier: workspace:*
         version: link:../core
@@ -414,10 +414,10 @@ packages:
       prettier: 2.8.8
     dev: true
 
-  /@effect/schema@0.63.1(effect@2.4.11)(fast-check@3.16.0):
-    resolution: {integrity: sha512-Vs7g72qbPTLWXZ4jcaPzprfbY1ODZxwqfOTrMhwvSUc6kgt1i2KP88LxFy7dFLJasx3CYPz8MTvP0x8mbBCftw==}
+  /@effect/schema@0.64.11(effect@2.4.11)(fast-check@3.16.0):
+    resolution: {integrity: sha512-n5FNgAc7mmWXR9cY3Ea44KciUv/I3tfWPIqK7cPyTIjGhJ7UP9vxfzmN66lct6QXOwL+AUC9Tx/HJ8mtE+zaGQ==}
     peerDependencies:
-      effect: ^2.4.0
+      effect: ^2.4.11
       fast-check: ^3.13.2
     dependencies:
       effect: 2.4.11
