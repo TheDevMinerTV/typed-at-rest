@@ -12,7 +12,7 @@
 	"dependencies": {
 		"@effect/schema": "^0.63.0",
 		"@typed-at-rest/core": "workspace:*",
-		"effect": "2.4.6"
+		"effect": "2.4.11"
 	},
 	"devDependencies": {
 		"@typed-at-rest/tsconfig": "workspace:*",
