@@ -11,7 +11,7 @@
 	},
 	"dependencies": {
 		"@effect/schema": "^0.63.0",
-		"effect": "2.4.11"
+		"effect": "2.4.19"
 	},
 	"devDependencies": {
 		"@typed-at-rest/tsconfig": "workspace:*",

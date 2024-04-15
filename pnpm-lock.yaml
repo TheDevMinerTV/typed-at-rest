@@ -37,13 +37,13 @@ importers:
     dependencies:
       '@effect/schema':
         specifier: ^0.63.0
-        version: 0.63.1(effect@2.4.11)(fast-check@3.16.0)
+        version: 0.63.1(effect@2.4.19)(fast-check@3.16.0)
       '@typed-at-rest/core':
         specifier: workspace:*
         version: link:../core
       effect:
-        specifier: 2.4.11
-        version: 2.4.11
+        specifier: 2.4.19
+        version: 2.4.19
     devDependencies:
       '@typed-at-rest/tsconfig':
         specifier: workspace:*
@@ -56,10 +56,10 @@ importers:
     dependencies:
       '@effect/schema':
         specifier: ^0.63.0
-        version: 0.63.1(effect@2.4.11)(fast-check@3.16.0)
+        version: 0.63.1(effect@2.4.19)(fast-check@3.16.0)
       effect:
-        specifier: 2.4.11
-        version: 2.4.11
+        specifier: 2.4.19
+        version: 2.4.19
     devDependencies:
       '@typed-at-rest/tsconfig':
         specifier: workspace:*
@@ -134,7 +134,7 @@ importers:
     dependencies:
       '@effect/schema':
         specifier: ^0.63.0
-        version: 0.63.1(effect@2.4.11)(fast-check@3.16.0)
+        version: 0.63.1(effect@2.4.19)(fast-check@3.16.0)
       '@typed-at-rest/core':
         specifier: workspace:*
         version: link:../../core
@@ -175,13 +175,13 @@ importers:
     dependencies:
       '@effect/schema':
         specifier: ^0.63.0
-        version: 0.63.1(effect@2.4.11)(fast-check@3.16.0)
+        version: 0.63.1(effect@2.4.19)(fast-check@3.16.0)
       '@typed-at-rest/core':
         specifier: workspace:*
         version: link:../core
       effect:
-        specifier: 2.4.11
-        version: 2.4.11
+        specifier: 2.4.19
+        version: 2.4.19
     devDependencies:
       '@typed-at-rest/tsconfig':
         specifier: workspace:*
@@ -414,13 +414,13 @@ packages:
       prettier: 2.8.8
     dev: true
 
-  /@effect/schema@0.63.1(effect@2.4.11)(fast-check@3.16.0):
+  /@effect/schema@0.63.1(effect@2.4.19)(fast-check@3.16.0):
     resolution: {integrity: sha512-Vs7g72qbPTLWXZ4jcaPzprfbY1ODZxwqfOTrMhwvSUc6kgt1i2KP88LxFy7dFLJasx3CYPz8MTvP0x8mbBCftw==}
     peerDependencies:
       effect: ^2.4.0
       fast-check: ^3.13.2
     dependencies:
-      effect: 2.4.11
+      effect: 2.4.19
       fast-check: 3.16.0
     dev: false
 
@@ -1844,8 +1844,8 @@ packages:
       esutils: 2.0.3
     dev: true
 
-  /effect@2.4.11:
-    resolution: {integrity: sha512-BMfpWloJdV8+lVGNCesOpE6e5k27nL7F5BiWtheOEyWEQiWkM6uLK6pQ1MK9bDmFELiqe961CHFqiIY9HymLFw==}
+  /effect@2.4.19:
+    resolution: {integrity: sha512-z/rn878Po3n522g/AYUDHD1SsZaZdvRxlTCLQ8xl8H6xA82nBwwooD1mdn/73Uywmp7d84oay3w3528r0Uyd0w==}
     dev: false
 
   /emoji-regex@8.0.0:
