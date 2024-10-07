@@ -36,8 +36,8 @@ importers:
   client:
     dependencies:
       '@effect/schema':
-        specifier: ^0.63.0
-        version: 0.63.1(effect@2.4.11)(fast-check@3.16.0)
+        specifier: ^0.75.0
+        version: 0.75.0(effect@2.4.11)
       '@typed-at-rest/core':
         specifier: workspace:*
         version: link:../core
@@ -55,8 +55,8 @@ importers:
   core:
     dependencies:
       '@effect/schema':
-        specifier: ^0.63.0
-        version: 0.63.1(effect@2.4.11)(fast-check@3.16.0)
+        specifier: ^0.75.0
+        version: 0.75.0(effect@2.4.11)
       effect:
         specifier: 2.4.11
         version: 2.4.11
@@ -133,8 +133,8 @@ importers:
   example/schema:
     dependencies:
       '@effect/schema':
-        specifier: ^0.63.0
-        version: 0.63.1(effect@2.4.11)(fast-check@3.16.0)
+        specifier: ^0.75.0
+        version: 0.75.0(effect@3.9.0)
       '@typed-at-rest/core':
         specifier: workspace:*
         version: link:../../core
@@ -174,8 +174,8 @@ importers:
   server:
     dependencies:
       '@effect/schema':
-        specifier: ^0.63.0
-        version: 0.63.1(effect@2.4.11)(fast-check@3.16.0)
+        specifier: ^0.75.0
+        version: 0.75.0(effect@2.4.11)
       '@typed-at-rest/core':
         specifier: workspace:*
         version: link:../core
@@ -414,14 +414,22 @@ packages:
       prettier: 2.8.8
     dev: true
 
-  /@effect/schema@0.63.1(effect@2.4.11)(fast-check@3.16.0):
-    resolution: {integrity: sha512-Vs7g72qbPTLWXZ4jcaPzprfbY1ODZxwqfOTrMhwvSUc6kgt1i2KP88LxFy7dFLJasx3CYPz8MTvP0x8mbBCftw==}
+  /@effect/schema@0.75.0(effect@2.4.11):
+    resolution: {integrity: sha512-Bx1sx5UjFQXaWiEKmkS0B/HnauEpdtTo0VoCZL4eNtAUgXfL3q2O/VLFv8idXFg43WhO7WlcYaHRjVxoIgw3DQ==}
     peerDependencies:
-      effect: ^2.4.0
-      fast-check: ^3.13.2
+      effect: ^3.9.0
     dependencies:
       effect: 2.4.11
-      fast-check: 3.16.0
+      fast-check: 3.22.0
+    dev: false
+
+  /@effect/schema@0.75.0(effect@3.9.0):
+    resolution: {integrity: sha512-Bx1sx5UjFQXaWiEKmkS0B/HnauEpdtTo0VoCZL4eNtAUgXfL3q2O/VLFv8idXFg43WhO7WlcYaHRjVxoIgw3DQ==}
+    peerDependencies:
+      effect: ^3.9.0
+    dependencies:
+      effect: 3.9.0
+      fast-check: 3.22.0
     dev: false
 
   /@esbuild/aix-ppc64@0.19.12:
@@ -1848,6 +1856,10 @@ packages:
     resolution: {integrity: sha512-BMfpWloJdV8+lVGNCesOpE6e5k27nL7F5BiWtheOEyWEQiWkM6uLK6pQ1MK9bDmFELiqe961CHFqiIY9HymLFw==}
     dev: false
 
+  /effect@3.9.0:
+    resolution: {integrity: sha512-KnbQNgPxd74cAHvAf0C7qv3+KLeuEVz9jUflCrB3gzVXrJQ0WTQzGF2DGg3frma1dFnPp1J4zJBonUVreAm1BQ==}
+    dev: false
+
   /emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
     dev: true
@@ -2147,11 +2159,11 @@ packages:
       tmp: 0.0.33
     dev: true
 
-  /fast-check@3.16.0:
-    resolution: {integrity: sha512-k8GtQHi4pJoRQ1gVDFQno+/FVkowo/ehiz/aCj9O/D7HRWb1sSFzNrw+iPVU8QlWtH+jNwbuN+dDVg3QkS56DQ==}
+  /fast-check@3.22.0:
+    resolution: {integrity: sha512-8HKz3qXqnHYp/VCNn2qfjHdAdcI8zcSqOyX64GOMukp7SL2bfzfeDKjSd+UyECtejccaZv3LcvZTm9YDD22iCQ==}
     engines: {node: '>=8.0.0'}
     dependencies:
-      pure-rand: 6.0.4
+      pure-rand: 6.1.0
     dev: false
 
   /fast-deep-equal@3.1.3:
@@ -3245,8 +3257,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /pure-rand@6.0.4:
-    resolution: {integrity: sha512-LA0Y9kxMYv47GIPJy6MI84fqTd2HmYZI83W/kM/SkKfDlajnZYfmXFTxkbY+xSBPkLJxltMa9hIkmdc29eguMA==}
+  /pure-rand@6.1.0:
+    resolution: {integrity: sha512-bVWawvoZoBYpp6yIoQtQXHZjmz35RSVHnUOTefl8Vcjr8snTPY1wnpSPMWekcFwbxI6gtmT7rSYPFvz71ldiOA==}
     dev: false
 
   /queue-microtask@1.2.3:
