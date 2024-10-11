@@ -14,13 +14,13 @@
 		"@typed-at-rest/next-server": "workspace:*",
 		"@types/node": "^18.19.17",
 		"next": "^14.1.0",
-		"react": "18.2.0",
-		"react-dom": "18.2.0"
+		"react": "18.3.1",
+		"react-dom": "18.3.1"
 	},
 	"devDependencies": {
 		"@typed-at-rest/tsconfig": "workspace:*",
-		"@types/react": "18.2.69",
-		"@types/react-dom": "18.2.22",
+		"@types/react": "18.3.11",
+		"@types/react-dom": "18.3.1",
 		"typescript": "^5.3.3"
 	}
 }
